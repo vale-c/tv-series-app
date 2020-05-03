@@ -8,6 +8,7 @@ const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_KEY;
 function App() {
   const [tvSeriesName, setTvSeriesName] = useState('');
   const [imgCover, setImgCover] = useState('');
+  const [overview, setOverview] = useState('');
 
   useEffect (() => {
     const movieURL = `https://api.themoviedb.org/3/trending/tv/day?api_key=${MOVIE_API_KEY}&page=1`
@@ -19,13 +20,20 @@ function App() {
       }) 
       .catch(e => console.log('error while loading data', e));
 
-      let PROXY = `https://cors-anywhere.herokuapp.com/`;
+      //let PROXY = `https://cors-anywhere.herokuapp.com/`;
       let imgUrl = `https://image.tmdb.org/t/p/w500/`;
 
       axios
         .get(movieURL)
         .then((res) => {
           setImgCover(imgUrl + res.data.results[0].poster_path)
+        })
+        .catch(e => console.log('error while fetching image!', e))
+
+      axios
+        .get(movieURL)
+        .then((res) => {
+          setOverview(res.data.results[0].overview)
         })
         .catch(e => console.log('error while fetching image!', e))
   })
@@ -51,7 +59,7 @@ function App() {
               </figure>
             </div>
             <div className="card-content">
-              <p className="result"></p>
+              <p className="result">{overview}</p>
             </div>
           </div>
         </div>
@@ -64,6 +72,7 @@ function App() {
               </figure>
             </div>
             <div className="card-content">
+              <p className="result">{overview}</p>
             </div>
           </div>
         </div>
@@ -76,6 +85,7 @@ function App() {
               </figure>
             </div>
             <div className="card-content">
+              <p className="result">{overview}</p>
             </div>
           </div>
         </div>
