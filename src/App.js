@@ -4,39 +4,46 @@ import axios from 'axios';
 
 const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_KEY;
 
-
 function App() {
-  const [tvSeriesName, setTvSeriesName] = useState('');
-  const [imgCover, setImgCover] = useState('');
-  const [overview, setOverview] = useState('');
-
+  const [TvData, setTvData] = useState([]);
+  
   useEffect (() => {
     const movieURL = `https://api.themoviedb.org/3/trending/tv/day?api_key=${MOVIE_API_KEY}&page=1`
+    //let PROXY = `https://cors-anywhere.herokuapp.com/`;
 
     axios
       .get(movieURL)
       .then((res) => {
-          setTvSeriesName(res.data.results[0].name);
+          setTvData(res.data.results);
+          //console.log(res.data.results);
       }) 
       .catch(e => console.log('error while loading data', e));
+    }, [])
 
-      //let PROXY = `https://cors-anywhere.herokuapp.com/`;
+    const renderData = () => {
       let imgUrl = `https://image.tmdb.org/t/p/w500/`;
 
-      axios
-        .get(movieURL)
-        .then((res) => {
-          setImgCover(imgUrl + res.data.results[0].poster_path)
-        })
-        .catch(e => console.log('error while fetching image!', e))
-
-      axios
-        .get(movieURL)
-        .then((res) => {
-          setOverview(res.data.results[0].overview)
-        })
-        .catch(e => console.log('error while fetching image!', e))
-  })
+      return TvData.map(info => {
+        return (
+          <div className="columns">
+            <div className="column">
+              <p className="title">{info.name}</p>
+                <div className="card">
+                <div className="card-image">
+                  <figure className="image">
+                    <img src={imgUrl+info.poster_path} alt="img" />
+                  </figure>
+                </div>
+                <div className="card-content">
+                  <p className="result">{info.overview}</p>
+                  <p className="vote">{info.average_score}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    )}
 
   return (
     <div className="appContainer">
@@ -44,54 +51,13 @@ function App() {
         <div className="hero-body">
           <div className="container">
             <h1 className="title">TV App <span role="img" aria-label="movie-emoji">🎥</span></h1>
-            <h2 className="subtitle">Find epic TV Series.👌</h2>
+            <h2 className="subtitle">Find epic TV Series.<span role="img" aria-label="movie-emoji">👌</span></h2>
           </div>
         </div>
       </section>
-
-      <div className="columns">
-        <div className="column">
-          <p className="title">{tvSeriesName}</p>
-            <div className="card">
-            <div className="card-image">
-              <figure className="image">
-                <img src={imgCover} alt="img" />
-              </figure>
-            </div>
-            <div className="card-content">
-              <p className="result">{overview}</p>
-            </div>
-          </div>
-        </div>
-        <div className="column">
-          <p className="title">{tvSeriesName}</p>
-            <div className="card">
-            <div className="card-image">
-              <figure className="image">
-                <img src={imgCover} alt="img" />
-              </figure>
-            </div>
-            <div className="card-content">
-              <p className="result">{overview}</p>
-            </div>
-          </div>
-        </div>
-        <div className="column">
-          <p className="title">{tvSeriesName}</p>
-            <div className="card">
-            <div className="card-image">
-              <figure className="image">
-                <img src={imgCover} alt="img" />
-              </figure>
-            </div>
-            <div className="card-content">
-              <p className="result">{overview}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+        {renderData()}
     </div>
-  );
-}
+  )
+};
 
 export default App;
