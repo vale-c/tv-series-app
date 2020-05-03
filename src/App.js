@@ -35,7 +35,7 @@ function App() {
           <p className="title">Latest</p>
             <div className="card">
             <div className="card-image">
-              <figure className="image is-4by3">
+              <figure className="image">
                 <img src="https://image.tmdb.org/t/p/w220_and_h330_face/qcr9bBY6MVeLzriKCmJOv1562uY.jpg" alt="" />
               </figure>
             </div>
@@ -49,7 +49,7 @@ function App() {
           <p className="title">Latest</p>
             <div className="card">
             <div className="card-image">
-              <figure className="image is-4by3">
+              <figure className="image">
                 <img src="https://image.tmdb.org/t/p/w220_and_h330_face/qcr9bBY6MVeLzriKCmJOv1562uY.jpg" alt="" />
               </figure>
             </div>
@@ -61,7 +61,7 @@ function App() {
           <p className="title">Latest</p>
             <div className="card">
             <div className="card-image">
-              <figure className="image is-4by3">
+              <figure className="image">
                 <img src="https://image.tmdb.org/t/p/w220_and_h330_face/qcr9bBY6MVeLzriKCmJOv1562uY.jpg" alt="" />
               </figure>
             </div>
