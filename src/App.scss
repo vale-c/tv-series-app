@@ -14,15 +14,16 @@ $white-shade: #f2f2f2;
 
 body {
   background-color: #9c5555;
+  font-family: "Roboto Slab", sans-serif;
   width: 100%;
   height: 100vh;
-  font-family: "Roboto Slab", sans-serif;
 }
 
 .hero {
   text-align: center;
   background-color: $dark-bg;
   padding: 2rem;
+  margin-bottom: 1rem;
   width: 100vw;
 
   .title {
@@ -34,16 +35,16 @@ body {
 }
 
   .row {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 
     .column {
       align-items: flex-start;
-      // float: left;
       width: 25%;
-      padding: 0 10px;
+      padding: 1rem 10px;
 
       .card {
+        border-radius: 5px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         padding: 16px;
         text-align: center;
@@ -55,16 +56,18 @@ body {
         }
 
         .card-content {
+    
 
           .card-image {
             .image {
               img {
-
+                border-radius: 5px;
               }
             }
           }
           .card-text {
             .overview {
+              margin-top: 1rem;
 
             }
             .vote {
