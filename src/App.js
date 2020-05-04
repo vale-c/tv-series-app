@@ -35,7 +35,9 @@ function App() {
                     </figure>
                   </div>
                   <div className="card-text">
-                    <p className="overview">{info.overview}</p>
+                    <div className="truncate-overflow">
+                      <p className="overview">{info.overview}</p>
+                      </div>
                     <p className="vote">{info.vote_average}</p>
                   </div>
                 </div>
