@@ -1,48 +1,82 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
 
-//Main Colors
+/* Colors */
 $dark-bg: #312f2f;
 $white: #fff;
 $white-shade: #f2f2f2;
 
+/* Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #cc4a4a;
+  background-color: #9c5555;
   width: 100%;
   height: 100vh;
-}
-
-.appContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
   font-family: "Roboto Slab", sans-serif;
+}
+
+.hero {
   text-align: center;
+  background-color: $dark-bg;
+  padding: 2rem;
+  width: 100vw;
 
-  .hero {
-    background-color: $dark-bg;
-    padding: 2rem;
-    width: 100vw;
-
-    .title {
-      color: $white;
-    }
-    .subtitle {
-      color: $white-shade;
-    }
+  .title {
+    color: $white;
   }
-
-  .columns {
-    display: flex;
-    flex-direction: row;
-    margin: 20px;
-    .column {
-      margin: 0 20px;
-    }
+  .subtitle {
+    color: $white-shade;
   }
 }
+
+  .row {
+    margin: 0 -5px;
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 10px;
+
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: $white-shade;
+
+        .title {
+        
+        }
+
+        .card-content {
+          .card-image {
+            .image {
+              img {
+
+              }
+            }
+          }
+          .card-text {
+            .overview {
+
+            }
+            .vote {
+
+            }
+          }
+        }
+      }
+
+    }
+
+    
+  }

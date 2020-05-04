@@ -21,26 +21,27 @@ function App() {
     }, [])
 
     const renderData = () => {
-      let imgUrl = `https://image.tmdb.org/t/p/w500/`;
+      let imgUrl = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/`;
 
       return TvData.map(info => {
         return (
-          <div className="columns">
-            <div className="column">
-              <p className="title">{info.name}</p>
-                <div className="card">
-                <div className="card-image">
-                  <figure className="image">
-                    <img src={imgUrl+info.poster_path} alt="img" />
-                  </figure>
-                </div>
+            <div class="column">
+              <div className="card">
+                <p className="title">{info.name}</p>
                 <div className="card-content">
-                  <p className="result">{info.overview}</p>
-                  <p className="vote">{info.average_score}</p>
+                  <div className="card-image">
+                    <figure className="image">
+                      <img src={imgUrl+info.poster_path} alt="img" />
+                    </figure>
+                  </div>
+                  <div className="card-text">
+                    <p className="overview">{info.overview}</p>
+                    <p className="vote">{info.vote_average}</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          
         );
       }
     )}
@@ -55,7 +56,10 @@ function App() {
           </div>
         </div>
       </section>
+      <div className="row">
         {renderData()}
+      </div>
+        
     </div>
   )
 };
