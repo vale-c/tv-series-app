@@ -4,6 +4,18 @@ import axios from 'axios';
 
 const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_KEY;
 
+const desc = document.querySelectorAll('p.overview');
+const observer = new ResizeObserver(entries => {
+  for (let entry of entries) {
+    entry.target.classList[entry.target.scrollHeight > entry.contentRect.height ? 'add' : 'remove']('truncated');
+  }
+});
+
+desc.forEach(p => {
+  observer.observe(p);
+});
+
+
 function App() {
   const [TvData, setTvData] = useState([]);
   
@@ -36,8 +48,9 @@ function App() {
                   </div>
                   <div className="card-text">
                     <div className="truncate-overflow">
-                      <p className="overview">{info.overview}</p>
-                      </div>
+                      <p className="overview">{info.overview}</p>  
+                      <label for="expanded" role="button">read more</label>
+                    </div>
                     <p className="vote">{info.vote_average}</p>
                   </div>
                 </div>

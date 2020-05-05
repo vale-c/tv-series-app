@@ -67,32 +67,45 @@ body {
             .image {
               img {
                 border-radius: 5px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                overflow: hidden;
               }
             }
           }
           .card-text {
 
             .truncate-overflow {
-              --max-lines: 5;
-              position: relative;
-              max-height: calc(var(--lh) * var(--max-lines));
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;  
               overflow: hidden;
-              padding-right: 1rem; /* space for ellipsis */
-              &::before {
-                position: absolute;
-                content: "...";
-                inset-block-end: 0; /* "bottom" */
-                inset-inline-end: 0; /* "right" */
+
+              label {
+                border-radius: 4px;
+                padding: 0.2em 0.6em;
+                border: 1px solid #009ce2;
+                background-color: #00acff;
+                color: #fff;
+                font-size: 0.8em;
               }
-              &::after {
-                content: "";
-                position: absolute;
-                inset-inline-end: 0; /* "right" */
-                width: 1rem;
-                height: 1rem;
-                background: white;
+
+              input:focus ~ label {
+                outline: -webkit-focus-ring-color auto 5px;
               }
+              
+              input:checked + p {
+                -webkit-line-clamp: unset;
+              }
+              
+              input:checked ~ label,
+              p:not(.truncated) ~ label{
+                display: none;
+              }
+
             }
+
               .overview {
                 margin-top: 1rem;
               }
