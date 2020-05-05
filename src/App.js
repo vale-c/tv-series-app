@@ -4,18 +4,6 @@ import axios from 'axios';
 
 const MOVIE_API_KEY = process.env.REACT_APP_MOVIE_KEY;
 
-const desc = document.querySelectorAll('p.overview');
-const observer = new ResizeObserver(entries => {
-  for (let entry of entries) {
-    entry.target.classList[entry.target.scrollHeight > entry.contentRect.height ? 'add' : 'remove']('truncated');
-  }
-});
-
-desc.forEach(p => {
-  observer.observe(p);
-});
-
-
 function App() {
   const [TvData, setTvData] = useState([]);
   
@@ -33,6 +21,17 @@ function App() {
     }, [])
 
     const renderData = () => {
+      const desc = document.querySelectorAll('p.overview');
+      const observer = new ResizeObserver(entries => {
+        for (let entry of entries) {
+          entry.target.classList[entry.target.scrollHeight > entry.contentRect.height ? 'add' : 'remove']('truncated');
+        }
+      });
+
+      desc.forEach(p => {
+        observer.observe(p);
+      });
+
       let imgUrl = `https://image.tmdb.org/t/p/w300_and_h450_bestv2/`;
 
       return TvData.map(info => {
@@ -47,7 +46,8 @@ function App() {
                     </figure>
                   </div>
                   <div className="card-text">
-                    <div className="truncate-overflow">
+                    <div className="box">
+                      <input type="checkbox" id="expanded" />
                       <p className="overview">{info.overview}</p>  
                       <label for="expanded" role="button">read more</label>
                     </div>

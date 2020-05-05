@@ -61,8 +61,6 @@ body {
         }
 
         .card-content {
-    
-
           .card-image {
             .image {
               img {
@@ -75,12 +73,25 @@ body {
             }
           }
           .card-text {
+            .box {
+              input {
+                opacity: 0;
+                position: absolute;
+                pointer-events: none;
 
-            .truncate-overflow {
-              display: -webkit-box;
-              -webkit-line-clamp: 3;
-              -webkit-box-orient: vertical;  
-              overflow: hidden;
+                &:focus ~ label {
+                  outline: -webkit-focus-ring-color auto 5px;
+                }
+                
+                &:checked + p {
+                  -webkit-line-clamp: unset;
+                }
+                
+                &:checked ~ label,
+                p:not(.truncated) ~ label{
+                  display: none;
+                }
+              }
 
               label {
                 border-radius: 4px;
@@ -90,35 +101,20 @@ body {
                 color: #fff;
                 font-size: 0.8em;
               }
-
-              input:focus ~ label {
-                outline: -webkit-focus-ring-color auto 5px;
-              }
-              
-              input:checked + p {
-                -webkit-line-clamp: unset;
-              }
-              
-              input:checked ~ label,
-              p:not(.truncated) ~ label{
-                display: none;
-              }
-
-            }
-
               .overview {
                 margin-top: 1rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;  
+                overflow: hidden;
               }
-              .vote {
-                margin: 1rem 0;
-                font-size: 1.5rem;
-
-              }
+            }
+            .vote {
+              margin: 1rem 0;
+              font-size: 1.5rem;
+            }
           }
         }
       }
-
     }
-
-    
   }
