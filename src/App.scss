@@ -2,8 +2,8 @@
 
 /* Colors */
 $dark-bg: #312f2f;
+$black: #000;
 $white: #fff;
-$white-shade: #f2f2f2;
 
 /* Reset */
 * {
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  background-color: #9c5555;
+  background-color: $black;
   font-family: "Roboto Slab", sans-serif;
   width: 100%;
   height: 100vh;
@@ -26,16 +26,17 @@ body {
 
 .hero {
   text-align: center;
-  background-color: $dark-bg;
+  background-color: $white;
   padding: 2rem;
   margin-bottom: 1rem;
   width: 100vw;
 
   .title {
-    color: $white;
+    color: $black;
+    margin-bottom: 1.2rem;
   }
   .subtitle {
-    color: $white-shade;
+
   }
 }
 
@@ -53,7 +54,7 @@ body {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         padding: 16px;
         text-align: center;
-        background-color: $white-shade;
+        background-color: $white;
 
         .title {
           font-weight: 700;
@@ -74,43 +75,22 @@ body {
           }
           .card-text {
             .box {
-              input {
-                opacity: 0;
-                position: absolute;
-                pointer-events: none;
-
-                &:focus ~ label {
-                  outline: -webkit-focus-ring-color auto 5px;
-                }
-                
-                &:checked + p {
-                  -webkit-line-clamp: unset;
-                }
-                
-                &:checked ~ label,
-                p:not(.truncated) ~ label{
-                  display: none;
-                }
-              }
-
-              label {
-                border-radius: 4px;
-                padding: 0.2em 0.6em;
-                border: 1px solid #009ce2;
-                background-color: #00acff;
-                color: #fff;
-                font-size: 0.8em;
-              }
               .overview {
                 margin-top: 1rem;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;  
-                overflow: hidden;
+              }
+              .hidden {
+                display: none;
               }
             }
+            .score {
+              font-size: 1.2rem;
+              font-weight: 700;
+            }
             .vote {
-              margin: 1rem 0;
+              display: flex;
+              justify-content: center;
+              margin-top: 0.5rem;
+              margin-bottom: 0;
               font-size: 1.5rem;
             }
           }
